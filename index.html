@@ -14,30 +14,27 @@
 
 <body>
     <!-- Container ALL LEFT -->
-    <div id="containerAllLeft" class="containerAllLeftClass">
+    <div id="containerLeft">
     </div>
     <!-- Container ALL RIGHT -->
-    <div id="containerAllRight" class="containerAllRightClass">
+    <div id="containerRight">
         <div id="user-score"></div>
     </div>
 </body>
 
 <!-- Template user-logging -->
 <template id="user-logging-page">
-    <div>
-        <h1>Choose a user name</h1> 
+    <div><h1>Choose a user name</h1></div>
+    <div id="user-name-data">
+        <h3>User Name</h3>
+        <input id="user-name-text-area" type="text" maxlength="20">
+        <button id="button-user-page" class="gameButtonsClass">Start</button>
     </div>
-    <div id="userNameContainer" class="userNameContainerClass">
-        <label for="userNameLabel" class="userNameLabelClass" >User Name</label>
-        <input id="userName" class="userNameClass" type="text" name="userNameLabel">
-    </div>
-    <button id="button-user-page" class="gameButtonsClass">START</button>
 </template>
 
 <!-- Template game-screen-->
 <template id="game-page">
-    <div>Game Screen</div>
-    <button id="stop-game-button">Start</button>
+    <button id="stop-game-button" class="gameButtonsClass">Start game</button>
 </template>
 
 <!-- Template final-score -->

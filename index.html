@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Links -->
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>Test Your Reflexes</title>
 </head>
 
@@ -14,7 +17,16 @@
     <div id="containerAllLeft" class="containerAllLeftClass">
         <!-- Template user-logging -->
         <template id="user-logging">
-        <div>user loging title</div>
+            <div>
+                <h1>Choose a user name</h1> 
+            </div>
+                <div id="userNameContainer" class="userNameContainerClass">
+                    <label for="userNameLabel" class="userNameLabelClass" >User Name</label>
+                    <input id="userName" class="userNameClass" type="text" name="userNameLabel">
+                </div>
+            
+
+                <button id="gameButtons" class="gameButtonsClass">START</button>
         </template>
         <!-- Template game-screen-->
         <template id="game-screen"></template>

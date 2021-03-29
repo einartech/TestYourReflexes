@@ -53,6 +53,8 @@ body {
 #containerRight {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background-color: var(--background-div);
     width: 30%;
     height: 70%;
@@ -63,7 +65,7 @@ body {
 }
 
 
-/* CSS - Div - Left - Button Container - Button*/
+/* CSS - Div - Left - User name page */
 
 #containerLeft div{
     margin: 2%;
@@ -87,6 +89,28 @@ body {
     width: 295px;
 }
 
+/* CSS - Div - Right - User Scores */
+
+#containerRight div{
+    margin: 5% 5% 0% 5%;
+    width: 100%;
+}
+
+#user-scores{
+    flex-grow: 1;
+    overflow: auto;
+    border-top: 5px solid var(--background-buttons);
+}
+
+#user-scores div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin: 5% 10% 5% 10%;
+}
+
+/* CSS - Style Buttons */
 
 .gameButtonsClass {
     display: flex;
@@ -114,4 +138,9 @@ h2 {
 h3 {
     margin: 0;
     font-size: 45px;
+}
+
+h4 {
+    margin: 0;
+    font-size: 30px;
 }

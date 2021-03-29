@@ -1,8 +1,28 @@
-/* This makes sure that the padding and border are included in the total width and height of the elements. */
+/* CSS - Vars */
+
+:root {
+    --background-general: #000000;
+    --background-div: #201862;
+    --font: 'VT323', monospace;
+}
+
+
+/* CSS - Root */
 
 * {
-    border: 1px solid darkred;
+    /* border: 1px solid darkred; */
+    font-family: var(--font);
+    color: rgb(255, 255, 255);
+    font-size: small;
+    text-align: center;
 }
+
+h1 {
+    font-size: xx-large;
+}
+
+
+/* CSS - Body */
 
 body {
     display: flex;
@@ -10,21 +30,49 @@ body {
     align-items: center;
     margin: 0;
     height: 100vh;
-    background-color: rgb(75, 78, 78);
+    background-color: var(--background-general);
 }
 
+
+/* CSS - Div - Left */
+
 .containerAllLeftClass {
-    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-div);
     width: 70%;
     height: 70%;
     margin-left: 2%;
     margin-right: 2%;
 }
 
+
+/* CSS - Div - Right */
+
 .containerAllRightClass {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--background-div);
     width: 30%;
     height: 70%;
     margin-left: 2%;
     margin-right: 2%;
+}
+
+
+/* CSS - Div - Left - Button Container - Button*/
+
+.gameButtonsClass {
+    display: flex;
+    justify-content: center;
+    background-color: lawngreen;
+    width: 142px;
+    margin-top: 5px;
+    font-size: large;
+}
+
+.userNameLabelClass {
+    display: block;
+    text-align: left;
+    font-size: x-large;
 }

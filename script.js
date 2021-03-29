@@ -5,7 +5,7 @@ var indexPage = 1;
 var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
 document.getElementById('containerAllLeft').appendChild(templateClon);
-document.getElementById("start-user-logging-button").addEventListener("click", TemplateSwitch);
+document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
 
 // This function changes the container-left according to the page and templates
 function TemplateSwitch(){
@@ -38,7 +38,7 @@ function TemplateSwitch(){
             templateElement = document.getElementById("user-logging-page");
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerAllLeft").appendChild(templateClon);
-            document.getElementById("start-user-logging-button").addEventListener("click", TemplateSwitch);
+            document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
 
             indexPage = 1;
             break;

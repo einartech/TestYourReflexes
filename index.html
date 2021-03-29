@@ -15,30 +15,37 @@
 <body>
     <!-- Container ALL LEFT -->
     <div id="containerAllLeft" class="containerAllLeftClass">
-        <!-- Template user-logging -->
-        <template id="user-logging">
-            <div>
-                <h1>Choose a user name</h1> 
-            </div>
-                <div id="userNameContainer" class="userNameContainerClass">
-                    <label for="userNameLabel" class="userNameLabelClass" >User Name</label>
-                    <input id="userName" class="userNameClass" type="text" name="userNameLabel">
-                </div>
-            
-
-                <button id="gameButtons" class="gameButtonsClass">START</button>
-        </template>
-        <!-- Template game-screen-->
-        <template id="game-screen"></template>
-        <!-- Template final-score -->
-        <template id="final-score"></template>
     </div>
     <!-- Container ALL RIGHT -->
     <div id="containerAllRight" class="containerAllRightClass">
         <div id="user-score"></div>
     </div>
 </body>
+
+<!-- Template user-logging -->
+<template id="user-logging-page">
+    <div>
+        <h1>Choose a user name</h1> 
+    </div>
+    <div id="userNameContainer" class="userNameContainerClass">
+        <label for="userNameLabel" class="userNameLabelClass" >User Name</label>
+        <input id="userName" class="userNameClass" type="text" name="userNameLabel">
+    </div>
+    <button id="button-user-page" class="gameButtonsClass">START</button>
+</template>
+
+<!-- Template game-screen-->
+<template id="game-page">
+    <div>Game Screen</div>
+    <button id="stop-game-button">Start</button>
+</template>
+
+<!-- Template final-score -->
+<template id="final-score-page">
+    <div>Final-Score</div>
+    <button id="play-again-button">Start</button>
+</template>
+
 <!-- JS -->
 <script src="script.js"></script>
-
 </html>

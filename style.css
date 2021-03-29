@@ -3,6 +3,7 @@
 :root {
     --background-general: #000000;
     --background-div: #201862;
+    --background-buttons: lawngreen;
     --font: 'VT323', monospace;
 }
 
@@ -17,16 +18,12 @@
     text-align: center;
 }
 
-h1 {
-    font-size: xx-large;
-}
-
-
 /* CSS - Body */
 
 body {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     margin: 0;
     height: 100vh;
@@ -36,43 +33,85 @@ body {
 
 /* CSS - Div - Left */
 
-.containerAllLeftClass {
+#containerLeft {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     background-color: var(--background-div);
     width: 70%;
     height: 70%;
-    margin-left: 2%;
+    margin-left: 4%;
     margin-right: 2%;
+    border: 10px solid var(--background-buttons);
+    border-radius: 40px;
 }
 
 
 /* CSS - Div - Right */
 
-.containerAllRightClass {
+#containerRight {
+    display: flex;
+    flex-direction: column;
     background-color: var(--background-div);
     width: 30%;
     height: 70%;
     margin-left: 2%;
-    margin-right: 2%;
+    margin-right: 4%;
+    border: 10px solid var(--background-buttons);
+    border-radius: 40px;
 }
 
 
 /* CSS - Div - Left - Button Container - Button*/
 
+#containerLeft div{
+    margin: 2%;
+}
+
+#user-name-data{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#user-name-data * {
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+#user-name-text-area{
+    padding: 0;
+    color: var(--background-div);
+    font-size: 35px;
+    width: 295px;
+}
+
+
 .gameButtonsClass {
     display: flex;
     justify-content: center;
-    background-color: lawngreen;
-    width: 142px;
-    margin-top: 5px;
-    font-size: large;
+    align-items: center;
+    background-color: var(--background-buttons);
+    color: var(--background-div);
+    font-size: 45px;
+    width: 300px;
+    height: 50px;
 }
 
-.userNameLabelClass {
-    display: block;
-    text-align: left;
-    font-size: x-large;
+/* CSS - h1 - h2 - h3 */
+
+h1 {
+    margin: 0;
+    font-size: 75px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 60px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 45px;
 }

@@ -3,7 +3,8 @@ var indexPage = 1;
 
 // Globals for timer
 var timer = 0;
-var intervalElement;
+var startTime;
+var finishTime;
 
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
@@ -78,18 +79,13 @@ function FinishGame(){
     document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
     document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
 
-    intervalElement = setInterval(CountMiliseconds,10);
-}
-
-/* This function counts the miliseconds */
-function CountMiliseconds(){
-    timer++;
+    startTime = new Date();
 }
 
 /* This function saves the time spent and shown in the last page */
 function SaveTheTime(){
-    clearInterval(intervalElement);
-    timer = timer/100;
+    finishTime = new Date();
+    timer = (finishTime - startTime)/1000;
 
     document.getElementById("score-data").innerHTML = timer + " seconds";
 }

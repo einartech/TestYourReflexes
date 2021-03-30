@@ -8,9 +8,9 @@ document.getElementById('containerAllLeft').appendChild(templateClon);
 document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
 
 // This function changes the container-left according to the page and templates
-function TemplateSwitch(){
+function TemplateSwitch() {
     var containerLeft = document.getElementById("containerAllLeft");
-    
+
     // The container.left content will be removed
     while (containerLeft.firstChild) {
         containerLeft.removeChild(containerLeft.firstChild);
@@ -22,7 +22,8 @@ function TemplateSwitch(){
             templateElement = document.getElementById("game-page");
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerAllLeft").appendChild(templateClon);
-            document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
+            // document.getElementById("start-game-button").addEventListener("click", TemplateSwitch);
+            document.getElementById("start-game-button").addEventListener("click", eraseGameContainerDiv);
 
             indexPage++;
             break;

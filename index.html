@@ -14,37 +14,75 @@
 
 <body>
     <!-- Container ALL LEFT -->
-    <div id="containerAllLeft" class="containerAllLeftClass">
+    <div id="containerLeft">
     </div>
     <!-- Container ALL RIGHT -->
-    <div id="containerAllRight" class="containerAllRightClass">
-        <div id="user-score"></div>
+    <div id="containerRight">
+        <div><h2>User Scores</h2></div>
+        <div id="user-scores">
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+            <div>
+                <h4>Jonathan</h4>
+                <h4>4 seconds</h4>
+            </div>
+        </div>
     </div>
 </body>
 
 <!-- Template user-logging -->
 <template id="user-logging-page">
-    <div>
-        <h1>Choose a user name</h1> 
+    <div><h1>Choose a user name</h1></div>
+    <div id="user-name-data">
+        <h3>User Name</h3>
+        <input id="user-name-text-area" type="text" maxlength="20">
+        <button id="button-user-page" class="gameButtonsClass">Start</button>
     </div>
-    <div id="userNameContainer" class="userNameContainerClass">
-        <label for="userNameLabel" class="userNameLabelClass" >User Name</label>
-        <input id="userName" class="userNameClass" type="text" name="userNameLabel">
-    </div>
-    <button id="button-user-page" class="gameButtonsClass">START</button>
 </template>
 
 <!-- Template game-screen Start-->
 <template id="game-page">
-    <div id="GameContainer" class="GameContainerClass" >
-    <button id="start-game-button" class="gameButtonsClass">START GAME</button>
-    </div>
+    <button id="stop-game-button" class="gameButtonsClass">Start game</button>
 </template>
 
 <!-- Template final-score -->
 <template id="final-score-page">
-    <div>Final-Score</div>
-    <button id="play-again-button">Start</button>
+    <div id="information-score">
+        <div>
+            <h1>Your score</h1>
+        </div>
+        <div>
+            <h3>Your reaction time was:</h3>
+            <h3>"X" seconds</h3>
+        </div>
+        <div><button id="play-again-button" class="gameButtonsClass">Play again</button></div>
+    </div>
 </template>
 
 <!-- JS -->

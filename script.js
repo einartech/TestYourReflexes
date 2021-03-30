@@ -4,12 +4,12 @@ var indexPage = 1;
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
-document.getElementById('containerAllLeft').appendChild(templateClon);
+document.getElementById("containerLeft").appendChild(templateClon);
 document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
 
 // This function changes the container-left according to the page and templates
 function TemplateSwitch(){
-    var containerLeft = document.getElementById("containerAllLeft");
+    var containerLeft = document.getElementById("containerLeft");
     
     // The container.left content will be removed
     while (containerLeft.firstChild) {
@@ -21,7 +21,7 @@ function TemplateSwitch(){
         case 1:
             templateElement = document.getElementById("game-page");
             templateClon = templateElement.content.cloneNode(true);
-            document.getElementById("containerAllLeft").appendChild(templateClon);
+            document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
 
             indexPage++;
@@ -29,7 +29,7 @@ function TemplateSwitch(){
         case 2:
             templateElement = document.getElementById("final-score-page");
             templateClon = templateElement.content.cloneNode(true);
-            document.getElementById("containerAllLeft").appendChild(templateClon);
+            document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("play-again-button").addEventListener("click", TemplateSwitch);
 
             indexPage++;
@@ -37,7 +37,7 @@ function TemplateSwitch(){
         case 3:
             templateElement = document.getElementById("user-logging-page");
             templateClon = templateElement.content.cloneNode(true);
-            document.getElementById("containerAllLeft").appendChild(templateClon);
+            document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
 
             indexPage = 1;

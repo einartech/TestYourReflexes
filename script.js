@@ -87,7 +87,7 @@ function FinishGame(){
     startTime = new Date();
 
     ChangeButtonPosition();
-    positionRandomInterval = setInterval(ChangeButtonPosition, 200);
+    positionRandomInterval = setInterval(ChangeButtonPosition, 1000);
 }
 
 // This function changes the "stop button" position

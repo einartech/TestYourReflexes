@@ -90,6 +90,7 @@ function FinishGame(){
     positionRandomInterval = setInterval(ChangeButtonPosition, 200);
 }
 
+// This function changes the "stop button" position
 function ChangeButtonPosition(){
     var positionX = Math.floor(Math.random() * 67);
     var positionY = Math.floor(Math.random() * 93);
@@ -109,10 +110,7 @@ function SaveTheTime(){
     clearInterval(positionRandomInterval);
 }
 
-
-
-
-
+// This function checks the first User Validation
 function UserNameValidation(){
     var userNameTextArea = document.getElementById("user-name-text-area");
 
@@ -127,6 +125,7 @@ function UserNameValidation(){
     }
 }
 
+// This function checks continuosly the user validation
 function CheckTextArea(){
     var userNameTextArea = document.getElementById("user-name-text-area");
 
@@ -142,6 +141,7 @@ function CheckTextArea(){
     }
 }
 
+// This function inserts the username and creates the div in the user-score space
 function InsertUserScores(){
     var userNamePlaying = document.getElementById("user-name-text-area").value;
 

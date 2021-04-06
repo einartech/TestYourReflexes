@@ -116,9 +116,6 @@ function ChangeButtonPosition(){
     var positionX = Math.floor(Math.random() * (containerWidth-stopButtonWidth-42));
     var positionY = Math.floor(Math.random() * (containerHeight-stopButtonHeight-42));
 
-    console.log(containerWidth);
-    console.log(containerHeight);
-
     document.getElementById("stop-game-button").style.left = positionX + "px";
     document.getElementById("stop-game-button").style.top = positionY + "px";
 }

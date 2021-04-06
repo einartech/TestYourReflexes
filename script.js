@@ -6,11 +6,14 @@ var timer = 0;
 var startTime;
 var finishTime;
 
+// Global interval to change position
+var positionRandomInterval;
+
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
 document.getElementById("containerLeft").appendChild(templateClon);
-document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
+document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
 
 // This function changes the container-left according to the page and templates
 function TemplateSwitch(){
@@ -43,7 +46,7 @@ function TemplateSwitch(){
             templateElement = document.getElementById("user-logging-page");
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerLeft").appendChild(templateClon);
-            document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
+            document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
 
             indexPage = 1;
             break;
@@ -75,11 +78,22 @@ function FinishGame(){
     /* "Get Ready" message deleted and stop button added and shown */
     var divGetReadyElement = document.getElementById("get-ready-message");
     divGetReadyElement.remove();
-    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<button id='stop-game-button' class='gameButtonsClass'>Stop game</button>");
+    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><button id='stop-game-button' class='gameButtonsClass'>Stop game</button></div>");
     document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
     document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
 
     startTime = new Date();
+
+    ChangeButtonPosition();
+    positionRandomInterval = setInterval(ChangeButtonPosition, 200);
+}
+
+function ChangeButtonPosition(){
+    var positionX = Math.floor(Math.random() * 67);
+    var positionY = Math.floor(Math.random() * 93);
+
+    document.getElementById("stop-game-button").style.left = positionX + "%";
+    document.getElementById("stop-game-button").style.top = positionY + "%";
 }
 
 /* This function saves the time spent and shown in the last page */
@@ -88,4 +102,42 @@ function SaveTheTime(){
     timer = (finishTime - startTime)/1000;
 
     document.getElementById("score-data").innerHTML = timer + " seconds";
+    document.getElementsByClassName("time-spent")[0].innerHTML = timer + " seconds";
+
+    clearInterval(positionRandomInterval);
+}
+
+
+
+
+
+function UserNameValidation(){
+    var userNameTextArea = document.getElementById("user-name-text-area");
+
+    if(userNameTextArea.value == ""){
+        userNameTextArea.style.backgroundColor = "#FFA084";
+        userNameTextArea.style.border = "3px solid red";
+        userNameTextArea.setAttribute("placeholder", "Insert a user name...");
+        userNameTextArea.addEventListener("keydown", ResetTextAreaCSS);
+    }
+    else{
+        InsertUserScores();
+        TemplateSwitch();
+    }
+}
+
+function ResetTextAreaCSS(){
+    var userNameTextArea = document.getElementById("user-name-text-area");
+
+    userNameTextArea.style.border = "";
+    userNameTextArea.style.backgroundColor = "";
+    userNameTextArea.removeAttribute("placeholder");
+}
+
+function InsertUserScores(){
+    var userNamePlaying = document.getElementById("user-name-text-area").value;
+
+    document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
+    document.getElementsByClassName("user-name")[0].innerHTML = userNamePlaying;
+    document.getElementsByClassName("time-spent")[0].innerHTML = "Currently playing...";
 }

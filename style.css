@@ -71,12 +71,6 @@ body {
     margin: 2%;
 }
 
-#user-name-data{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 #user-name-data * {
     margin-top: 4%;
     margin-bottom: 4%;
@@ -92,6 +86,19 @@ body {
 #user-name-text-area::placeholder{
     color: red;
     font-size: 30px;
+}
+
+#game-level-select{
+    padding: 0;
+    color: var(--background-div);
+    font-size: 35px;
+    width: 295px;
+    text-align-last: center;
+}
+
+#game-level-select option{
+    color: var(--background-div);
+    font-size: 25px;
 }
 
 /* CSS - Div - Left - Score page */
@@ -115,10 +122,6 @@ body {
 #random-div{
     width: 98%;
     height: 100%;
-}
-
-#stop-game-button{
-    position: relative;
 }
 
 /* CSS - Div - Right - User Scores */

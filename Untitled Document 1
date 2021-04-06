@@ -1,0 +1,4 @@
+chmod 777 file2.txt
+Otorga totales permisos para ese file
+
+ls -l para ver los permisos

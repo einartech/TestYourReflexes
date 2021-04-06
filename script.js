@@ -68,6 +68,9 @@ function StartGame() {
     startButtonElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='get-ready-message'><h2>Get Ready...</h2></div>");
 
+    // Container Left background is changed
+    document.getElementById("containerLeft").style.backgroundImage = "url(Assets/fondo-game.gif)";
+
     // This function is called after 1 seconds
     setTimeout(RandomShown, 1000);
 }
@@ -86,6 +89,7 @@ function FinishGame(){
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><button id='stop-game-button' class='gameButtonsClass'>Stop game</button></div>");
     document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
     document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
+    document.getElementById("stop-game-button").addEventListener("click", ResetBackground);
 
     startTime = new Date();
 
@@ -175,4 +179,9 @@ function InsertUserScores(){
 // This function saves the game level selected in a global
 function SaveGameLevel(){
     gameLevel = document.getElementById("game-level-select").value;
+}
+
+// This function removes the background gif when game finish
+function ResetBackground(){
+    document.getElementById("containerLeft").style.backgroundImage = "";
 }

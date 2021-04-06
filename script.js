@@ -9,6 +9,9 @@ var finishTime;
 // Global interval to change position
 var positionRandomInterval;
 
+// Global to store the game-level
+var gameLevel;
+
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
@@ -86,17 +89,38 @@ function FinishGame(){
 
     startTime = new Date();
 
-    ChangeButtonPosition();
-    positionRandomInterval = setInterval(ChangeButtonPosition, 1000);
+    if(gameLevel == "static"){
+        document.getElementById("random-div").style.display = "flex";
+        document.getElementById("random-div").style.alignItems = "center";
+        document.getElementById("random-div").style.justifyContent = "center";
+    }
+    else if(gameLevel == "movement"){
+        document.getElementById("stop-game-button").style.position = "relative";
+        ChangeButtonPosition();
+        positionRandomInterval = setInterval(ChangeButtonPosition, 1000);
+    }
+    else if(gameLevel == "movement-insane"){
+        document.getElementById("stop-game-button").style.position = "relative";
+        ChangeButtonPosition();
+        positionRandomInterval = setInterval(ChangeButtonPosition, 250);
+    }
 }
 
 // This function changes the "stop button" position
 function ChangeButtonPosition(){
-    var positionX = Math.floor(Math.random() * 67);
-    var positionY = Math.floor(Math.random() * 93);
+    var stopButtonWidth = document.getElementById("stop-game-button").getBoundingClientRect().width;
+    var stopButtonHeight = document.getElementById("stop-game-button").getBoundingClientRect().height;
+    var containerWidth = document.getElementById("containerLeft").getBoundingClientRect().width;
+    var containerHeight = document.getElementById("containerLeft").getBoundingClientRect().height;
 
-    document.getElementById("stop-game-button").style.left = positionX + "%";
-    document.getElementById("stop-game-button").style.top = positionY + "%";
+    var positionX = Math.floor(Math.random() * (containerWidth-stopButtonWidth-42));
+    var positionY = Math.floor(Math.random() * (containerHeight-stopButtonHeight-42));
+
+    console.log(containerWidth);
+    console.log(containerHeight);
+
+    document.getElementById("stop-game-button").style.left = positionX + "px";
+    document.getElementById("stop-game-button").style.top = positionY + "px";
 }
 
 // This function saves the time spent and shown in the last page
@@ -121,6 +145,7 @@ function UserNameValidation(){
     }
     else{
         InsertUserScores();
+        SaveGameLevel();
         TemplateSwitch();
     }
 }
@@ -148,4 +173,9 @@ function InsertUserScores(){
     document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
     document.getElementsByClassName("user-name")[0].innerHTML = userNamePlaying;
     document.getElementsByClassName("time-spent")[0].innerHTML = "Currently playing...";
+}
+
+// This function saves the game level selected in a global
+function SaveGameLevel(){
+    gameLevel = document.getElementById("game-level-select").value;
 }

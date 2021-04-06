@@ -14,6 +14,7 @@ var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
 document.getElementById("containerLeft").appendChild(templateClon);
 document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
+document.getElementById("user-name-text-area").addEventListener("keyup", CheckTextArea);
 
 // This function changes the container-left according to the page and templates
 function TemplateSwitch(){
@@ -47,6 +48,7 @@ function TemplateSwitch(){
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
+            document.getElementById("user-name-text-area").addEventListener("keyup", CheckTextArea);
 
             indexPage = 1;
             break;
@@ -118,7 +120,6 @@ function UserNameValidation(){
         userNameTextArea.style.backgroundColor = "#FFA084";
         userNameTextArea.style.border = "3px solid red";
         userNameTextArea.setAttribute("placeholder", "Insert a user name...");
-        userNameTextArea.addEventListener("keydown", ResetTextAreaCSS);
     }
     else{
         InsertUserScores();
@@ -126,12 +127,19 @@ function UserNameValidation(){
     }
 }
 
-function ResetTextAreaCSS(){
+function CheckTextArea(){
     var userNameTextArea = document.getElementById("user-name-text-area");
 
-    userNameTextArea.style.border = "";
-    userNameTextArea.style.backgroundColor = "";
-    userNameTextArea.removeAttribute("placeholder");
+    if(userNameTextArea.value == ""){
+        userNameTextArea.style.backgroundColor = "#FFA084";
+        userNameTextArea.style.border = "3px solid red";
+        userNameTextArea.setAttribute("placeholder", "Insert a user name...");
+    }
+    else{
+        userNameTextArea.style.border = "";
+        userNameTextArea.style.backgroundColor = "";
+        userNameTextArea.removeAttribute("placeholder");
+    }
 }
 
 function InsertUserScores(){

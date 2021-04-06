@@ -55,29 +55,29 @@ function TemplateSwitch(){
     }
 }
 
-/* This function starts the game */
+// This function starts the game
 function StartGame() {
-    /* Timer reseted from previous game */
+    // Timer reseted from previous game
     timer = 0;
     
-    /* Button deleted and "Get Ready" message added and shown */
+    // Button deleted and "Get Ready" message added and shown
     var startButtonElement = document.getElementById("start-game-button");
     startButtonElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='get-ready-message'><h2>Get Ready...</h2></div>");
 
-    /* This function is called after 1 seconds */
+    // This function is called after 1 seconds
     setTimeout(RandomShown, 1000);
 }
 
-/* This function generates the random number and runs the finish game */
+// This function generates the random number and runs the finish game
 function RandomShown(){
     var randomNumber = Math.floor(Math.random() * 10000);
     setTimeout(FinishGame, randomNumber);
 }
 
-/* This function finishes the game */
+// This function finishes the game
 function FinishGame(){
-    /* "Get Ready" message deleted and stop button added and shown */
+    // "Get Ready" message deleted and stop button added and shown
     var divGetReadyElement = document.getElementById("get-ready-message");
     divGetReadyElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><button id='stop-game-button' class='gameButtonsClass'>Stop game</button></div>");
@@ -98,7 +98,7 @@ function ChangeButtonPosition(){
     document.getElementById("stop-game-button").style.top = positionY + "%";
 }
 
-/* This function saves the time spent and shown in the last page */
+// This function saves the time spent and shown in the last page
 function SaveTheTime(){
     finishTime = new Date();
     timer = (finishTime - startTime)/1000;

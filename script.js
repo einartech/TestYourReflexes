@@ -68,6 +68,9 @@ function StartGame() {
     startButtonElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='get-ready-message'><h2>Get Ready...</h2></div>");
 
+    // Container Left background is changed
+    document.getElementById("containerLeft").style.backgroundImage = "url(Assets/fondo-game.gif)";
+
     // This function is called after 1 seconds
     setTimeout(RandomShown, 1000);
 }
@@ -83,9 +86,10 @@ function FinishGame(){
     // "Get Ready" message deleted and stop button added and shown
     var divGetReadyElement = document.getElementById("get-ready-message");
     divGetReadyElement.remove();
-    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><button id='stop-game-button' class='gameButtonsClass'>Stop game</button></div>");
+    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><div id='image-wrapper'><img id='stop-game-button' src='Assets/ufo.png'></div></div>");
     document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
     document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
+    document.getElementById("stop-game-button").addEventListener("click", ResetBackground);
 
     startTime = new Date();
 
@@ -95,12 +99,12 @@ function FinishGame(){
         document.getElementById("random-div").style.justifyContent = "center";
     }
     else if(gameLevel == "movement"){
-        document.getElementById("stop-game-button").style.position = "relative";
+        document.getElementById("image-wrapper").style.position = "relative";
         ChangeButtonPosition();
         positionRandomInterval = setInterval(ChangeButtonPosition, 1000);
     }
     else if(gameLevel == "movement-insane"){
-        document.getElementById("stop-game-button").style.position = "relative";
+        document.getElementById("image-wrapper").style.position = "relative";
         ChangeButtonPosition();
         positionRandomInterval = setInterval(ChangeButtonPosition, 250);
     }
@@ -108,16 +112,16 @@ function FinishGame(){
 
 // This function changes the "stop button" position
 function ChangeButtonPosition(){
-    var stopButtonWidth = document.getElementById("stop-game-button").getBoundingClientRect().width;
-    var stopButtonHeight = document.getElementById("stop-game-button").getBoundingClientRect().height;
+    var stopButtonWidth = document.getElementById("image-wrapper").getBoundingClientRect().width;
+    var stopButtonHeight = document.getElementById("image-wrapper").getBoundingClientRect().height;
     var containerWidth = document.getElementById("containerLeft").getBoundingClientRect().width;
     var containerHeight = document.getElementById("containerLeft").getBoundingClientRect().height;
 
-    var positionX = Math.floor(Math.random() * (containerWidth-stopButtonWidth-42));
-    var positionY = Math.floor(Math.random() * (containerHeight-stopButtonHeight-42));
+    var positionX = Math.floor(Math.random() * (containerWidth-stopButtonWidth-65));
+    var positionY = Math.floor(Math.random() * (containerHeight-stopButtonHeight-65));
 
-    document.getElementById("stop-game-button").style.left = positionX + "px";
-    document.getElementById("stop-game-button").style.top = positionY + "px";
+    document.getElementById("image-wrapper").style.left = positionX + "px";
+    document.getElementById("image-wrapper").style.top = positionY + "px";
 }
 
 // This function saves the time spent and shown in the last page
@@ -175,4 +179,9 @@ function InsertUserScores(){
 // This function saves the game level selected in a global
 function SaveGameLevel(){
     gameLevel = document.getElementById("game-level-select").value;
+}
+
+// This function removes the background gif when game finish
+function ResetBackground(){
+    document.getElementById("containerLeft").style.backgroundImage = "";
 }

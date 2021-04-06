@@ -1,8 +1,8 @@
 /* CSS - Vars */
 
 :root {
-    --background-general: #000000;
-    --background-div: #201862;
+    --background-div: rgba(32,24,98,0.5);
+    --background-text: rgba(32,24,98);
     --background-buttons: lawngreen;
     --font: 'VT323', monospace;
 }
@@ -16,6 +16,7 @@
     color: rgb(255, 255, 255);
     font-size: small;
     text-align: center;
+    cursor: url("Assets/gun-target.png") 32 32, auto;
 }
 
 /* CSS - Body */
@@ -27,7 +28,6 @@ body {
     align-items: center;
     margin: 0;
     height: 100vh;
-    background-color: var(--background-general);
 }
 
 
@@ -39,6 +39,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--background-div);
+    background-size: cover;
     width: 70%;
     height: 70%;
     margin-left: 4%;
@@ -78,7 +79,7 @@ body {
 
 #user-name-text-area{
     padding: 0;
-    color: var(--background-div);
+    color: var(--background-text);
     font-size: 35px;
     width: 295px;
 }
@@ -90,14 +91,14 @@ body {
 
 #game-level-select{
     padding: 0;
-    color: var(--background-div);
+    color: var(--background-text);
     font-size: 35px;
     width: 295px;
     text-align-last: center;
 }
 
 #game-level-select option{
-    color: var(--background-div);
+    color: var(--background-text);
     font-size: 25px;
 }
 
@@ -152,7 +153,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--background-buttons);
-    color: var(--background-div);
+    color: var(--background-text);
     font-size: 45px;
     width: 300px;
     height: 50px;
@@ -179,4 +180,16 @@ h3 {
 h4 {
     margin: 0;
     font-size: 30px;
+}
+
+/* UFO Image */
+
+#image-wrapper{
+    width: fit-content;
+    height: fit-content;
+}
+
+#stop-game-button{
+    height: 60px;
+    width: 80px;
 }

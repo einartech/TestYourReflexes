@@ -10,7 +10,17 @@ var finishTime;
 var positionRandomInterval;
 
 // Global to store the game-level
-var gameLevel;
+var gameLevel = "static";
+
+// Globals to save user scores
+var arrayScoresStatic = [];
+var arrayScoresMovement = [];
+var arrayScoresMovementInsane = [];
+
+var objectScore = {
+    username: new String,
+    score: 0
+}
 
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
@@ -18,6 +28,7 @@ var templateClon = templateElement.content.cloneNode(true);
 document.getElementById("containerLeft").appendChild(templateClon);
 document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
 document.getElementById("user-name-text-area").addEventListener("keyup", CheckTextArea);
+document.getElementById("game-level-select").addEventListener("change", ChangeRankingBySelector);
 
 // This function changes the container-left according to the page and templates
 function TemplateSwitch(){
@@ -43,6 +54,7 @@ function TemplateSwitch(){
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("play-again-button").addEventListener("click", TemplateSwitch);
+            document.getElementById("play-again-button").addEventListener("click", InitializeRankingScore);
 
             indexPage++;
             break;
@@ -52,6 +64,7 @@ function TemplateSwitch(){
             document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("button-user-page").addEventListener("click", UserNameValidation);
             document.getElementById("user-name-text-area").addEventListener("keyup", CheckTextArea);
+            document.getElementById("game-level-select").addEventListener("change", ChangeRankingBySelector);
 
             indexPage = 1;
             break;
@@ -87,9 +100,7 @@ function FinishGame(){
     var divGetReadyElement = document.getElementById("get-ready-message");
     divGetReadyElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='random-div'><div id='image-wrapper'><img id='stop-game-button' src='Assets/ufo.png'></div></div>");
-    document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
-    document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
-    document.getElementById("stop-game-button").addEventListener("click", ResetBackground);
+    document.getElementById("stop-game-button").addEventListener("click", SaveDataAfterFinish);
 
     startTime = new Date();
 
@@ -106,7 +117,7 @@ function FinishGame(){
     else if(gameLevel == "movement-insane"){
         document.getElementById("image-wrapper").style.position = "relative";
         ChangeButtonPosition();
-        positionRandomInterval = setInterval(ChangeButtonPosition, 250);
+        positionRandomInterval = setInterval(ChangeButtonPosition, 900);
     }
 }
 
@@ -129,8 +140,10 @@ function SaveTheTime(){
     finishTime = new Date();
     timer = (finishTime - startTime)/1000;
 
-    document.getElementById("score-data").innerHTML = timer + " seconds";
-    document.getElementsByClassName("time-spent")[0].innerHTML = timer + " seconds";
+    objectScore.score = timer;
+
+    document.getElementById("score-data").innerHTML = objectScore.score + " seconds";
+    document.getElementsByClassName("time-spent")[0].innerHTML = objectScore.score + " seconds";
 
     clearInterval(positionRandomInterval);
 }
@@ -146,7 +159,6 @@ function UserNameValidation(){
     }
     else{
         InsertUserScores();
-        SaveGameLevel();
         TemplateSwitch();
     }
 }
@@ -169,19 +181,93 @@ function CheckTextArea(){
 
 // This function inserts the username and creates the div in the user-score space
 function InsertUserScores(){
-    var userNamePlaying = document.getElementById("user-name-text-area").value;
+    objectScore.username = document.getElementById("user-name-text-area").value;
 
     document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
-    document.getElementsByClassName("user-name")[0].innerHTML = userNamePlaying;
+    document.getElementsByClassName("user-name")[0].innerHTML = objectScore.username;
     document.getElementsByClassName("time-spent")[0].innerHTML = "Currently playing...";
-}
-
-// This function saves the game level selected in a global
-function SaveGameLevel(){
-    gameLevel = document.getElementById("game-level-select").value;
 }
 
 // This function removes the background gif when game finish
 function ResetBackground(){
     document.getElementById("containerLeft").style.backgroundImage = "";
+}
+
+function RankingSort(){
+    var objectScoreCopy = Object.assign({}, objectScore);
+
+    if(gameLevel == "static"){
+        arrayScoresStatic.push(objectScoreCopy);
+        arrayScoresStatic.sort(function(a,b){return b.score - a.score});
+    }
+    else if(gameLevel == "movement"){
+        arrayScoresMovement.push(objectScoreCopy);
+        arrayScoresMovement.sort(function(a,b){return b.score - a.score});
+    }
+    else if(gameLevel == "movement-insane"){
+        arrayScoresMovementInsane.push(objectScoreCopy);
+        arrayScoresMovementInsane.sort(function(a,b){return b.score - a.score});
+    }
+}
+
+function SaveDataAfterFinish(){
+    ResetBackground();
+    TemplateSwitch();
+    SaveTheTime();
+    RankingSort();
+    UpdateRanking();
+}
+
+function ChangeRankingBySelector(){
+    // Save the value of the selector
+    gameLevel = document.getElementById("game-level-select").value;
+
+    UpdateRanking();
+}
+
+function UpdateRanking(){
+    var userScoresDiv = document.getElementById("user-scores");
+
+    // The user-scores content will be removed
+    while (userScoresDiv.firstChild) {
+        userScoresDiv.removeChild(userScoresDiv.firstChild);
+    }
+
+    if(gameLevel == "static"){
+        for(i=0 ; i<arrayScoresStatic.length ; i++){
+            document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
+            document.getElementsByClassName("user-name")[0].innerHTML = "#" + `${arrayScoresStatic.length - i}`+ " " + arrayScoresStatic[i].username;
+            document.getElementsByClassName("time-spent")[0].innerHTML = arrayScoresStatic[i].score + " seconds";
+        }
+    }
+    else if(gameLevel == "movement"){
+        for(i=0 ; i<arrayScoresMovement.length ; i++){
+            document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
+            document.getElementsByClassName("user-name")[0].innerHTML = "#" + `${arrayScoresMovement.length - i}`+ " " + arrayScoresMovement[i].username;
+            document.getElementsByClassName("time-spent")[0].innerHTML = arrayScoresMovement[i].score + " seconds";
+        }
+    }
+    else if(gameLevel == "movement-insane"){
+        for(i=0 ; i<arrayScoresMovementInsane.length ; i++){
+            document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
+            document.getElementsByClassName("user-name")[0].innerHTML = "#" + `${arrayScoresMovementInsane.length - i}`+ " " + arrayScoresMovementInsane[i].username;
+            document.getElementsByClassName("time-spent")[0].innerHTML = arrayScoresMovementInsane[i].score + " seconds";
+        }
+    }
+}
+
+function InitializeRankingScore(){
+    var userScoresDiv = document.getElementById("user-scores");
+    gameLevel = "static";
+
+    // The user-scores content will be removed
+    while (userScoresDiv.firstChild) {
+        userScoresDiv.removeChild(userScoresDiv.firstChild);
+    }
+
+    for(i=0 ; i<arrayScoresStatic.length ; i++){
+        document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4 class='user-name'></h4><h4 class='time-spent'></h4></div>");
+        document.getElementsByClassName("user-name")[0].innerHTML = "#" + `${arrayScoresStatic.length - i}`+ " " + arrayScoresStatic[i].username;
+        document.getElementsByClassName("time-spent")[0].innerHTML = arrayScoresStatic[i].score + " seconds";
+    }
 }

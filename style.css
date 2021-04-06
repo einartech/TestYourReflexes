@@ -18,6 +18,7 @@
     text-align: center;
 }
 
+
 /* CSS - Body */
 
 body {
@@ -67,11 +68,11 @@ body {
 
 /* CSS - Div - Left - User name page */
 
-#containerLeft div{
+#containerLeft div {
     margin: 2%;
 }
 
-#user-name-data{
+#user-name-data {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -82,16 +83,17 @@ body {
     margin-bottom: 4%;
 }
 
-#user-name-text-area{
+#user-name-text-area {
     padding: 0;
     color: var(--background-div);
     font-size: 35px;
     width: 295px;
 }
 
+
 /* CSS - Div - Left - Score page */
 
-#information-score{
+#information-score {
     width: 100%;
     height: 100%;
     display: flex;
@@ -105,26 +107,28 @@ body {
     margin-bottom: 3%;
 }
 
+
 /* CSS - Div - Right - User Scores */
 
-#containerRight div{
+#containerRight div {
     margin: 2% 2% 0% 2%;
     width: 100%;
 }
 
-#user-scores{
+#user-scores {
     flex-grow: 1;
     overflow: auto;
     border-top: 5px solid var(--background-buttons);
 }
 
-#user-scores div{
+#user-scores div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: fit-content;
     margin: 5% 10% 5% 10%;
 }
+
 
 /* CSS - Style Buttons */
 
@@ -138,6 +142,17 @@ body {
     width: 300px;
     height: 50px;
 }
+
+.crazyGameButtonsClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-buttons);
+    color: pink font-size: 45px;
+    width: 300px;
+    height: 50px;
+}
+
 
 /* CSS - h1 - h2 - h3 */
 
@@ -161,3 +176,6 @@ h4 {
     margin: 0;
     font-size: 30px;
 }
+
+
+/* Extra */

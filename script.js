@@ -7,12 +7,12 @@ var startTime;
 var finishTime;
 var userName;
 
+//! funcion, raiz que llame a 3
 // Template user-logging - 1 -
 var templateElement = document.getElementById("user-logging-page");
 var templateClon = templateElement.content.cloneNode(true);
 document.getElementById("containerLeft").appendChild(templateClon);
-document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
-document.getElementById("button-user-page").addEventListener("click", SaveTheUserName);
+document.getElementById("button-user-page").addEventListener("click", orderMyFunctions);
 
 
 // This function changes the container-left according to the page and templates
@@ -32,7 +32,6 @@ function TemplateSwitch() {
             document.getElementById("containerLeft").appendChild(templateClon);
             document.getElementById("start-game-button").addEventListener("click", StartGame);
 
-
             indexPage++;
             break;
         case 2:
@@ -47,8 +46,7 @@ function TemplateSwitch() {
             templateElement = document.getElementById("user-logging-page");
             templateClon = templateElement.content.cloneNode(true);
             document.getElementById("containerLeft").appendChild(templateClon);
-            document.getElementById("button-user-page").addEventListener("click", TemplateSwitch);
-            document.getElementById("button-user-page").addEventListener("click", SaveTheUserName);
+            document.getElementById("button-user-page").addEventListener("click", orderMyFunctions);
 
             indexPage = 1;
             break;
@@ -82,8 +80,9 @@ function FinishGame() {
     divGetReadyElement.remove();
     document.getElementById("containerLeft").insertAdjacentHTML("afterbegin", "<button id='stop-game-button' class='gameButtonsClass'>Stop game</button>");
     document.getElementById("stop-game-button").addEventListener("click", TemplateSwitch);
+    document.getElementById("stop-game-button").addEventListener("click", moveButton);
     document.getElementById("stop-game-button").addEventListener("click", SaveTheTime);
-    document.getElementById("stop-game-button").addEventListener("click", SaveTheUserName);
+
 
 
     startTime = new Date();
@@ -94,13 +93,24 @@ function SaveTheTime() {
     finishTime = new Date();
     timer = (finishTime - startTime) / 1000;
 
-    document.getElementById("score-data").innerHTML = timer + " seconds";
+    var userScore = document.getElementById("score-data").innerHTML = timer + " seconds";
+}
+/* This functi0n saves the user results into the right div */
+function SaveTheUserName() {
+    /* Create a new DIV to insert the data */
+    var savedUserScore = document.getElementById("user-scores").insertAdjacentHTML("afterbegin", '<div><h4 class="newUserPlayerName">Player</h4><h4 class="newUserPlayerScore">Currently playing...</h4></div>');
+    var userNameInserted = document.getElementById("user-name-text-area").value;
+    var UserDataRightDiv = document.getElementsByClassName("newUserPlayerName")[0].innerHTML = userNameInserted;
+    var replaceStringWithScore = document.getElementsByClassName("newUserPlayerScore")[1].innerHTML = timer;
 }
 
-function SaveTheUserName() {
-    /* This functi0n saves the user results into the right div */
-    var savedUserScore = document.getElementById("user-scores").insertAdjacentHTML("afterbegin", "<div><h4>Player</h4><h4>Currently playing</h4></div>");
-    var userName = document.getElementById("user-name-text-area").value;
-    savedUserScore.value.innerHTML = "HOLA GOwA GOLA "
+function orderMyFunctions() {
+    SaveTheUserName();
+    TemplateSwitch();
+}
+
+function moveButton() {
+    var myButton = document.getElementById("stop-game-button").removeClass('gameButtonsClass');
+    var myCrazyButton = document.getElementById("stop-game-button").addClass('crazyGameButtonsClass');
 
 }

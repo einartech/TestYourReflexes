@@ -193,6 +193,7 @@ function ResetBackground(){
     document.getElementById("containerLeft").style.backgroundImage = "";
 }
 
+// This function sorts the arrayScores
 function RankingSort(){
     var objectScoreCopy = Object.assign({}, objectScore);
 
@@ -210,6 +211,7 @@ function RankingSort(){
     }
 }
 
+// This function is called after the alien is catched
 function SaveDataAfterFinish(){
     ResetBackground();
     TemplateSwitch();
@@ -218,6 +220,7 @@ function SaveDataAfterFinish(){
     UpdateRanking();
 }
 
+// This function is called by the selector in order to save the game level and update the ranking
 function ChangeRankingBySelector(){
     // Save the value of the selector
     gameLevel = document.getElementById("game-level-select").value;
@@ -225,6 +228,7 @@ function ChangeRankingBySelector(){
     UpdateRanking();
 }
 
+// This function updates the ranking when the selector is changed and when the game has finished
 function UpdateRanking(){
     var userScoresDiv = document.getElementById("user-scores");
 
@@ -256,6 +260,7 @@ function UpdateRanking(){
     }
 }
 
+// This function is called when the game is reinitialized in order to show the static ranking
 function InitializeRankingScore(){
     var userScoresDiv = document.getElementById("user-scores");
     gameLevel = "static";

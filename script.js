@@ -117,7 +117,7 @@ function FinishGame(){
     else if(gameLevel == "movement-insane"){
         document.getElementById("image-wrapper").style.position = "relative";
         ChangeButtonPosition();
-        positionRandomInterval = setInterval(ChangeButtonPosition, 900);
+        positionRandomInterval = setInterval(ChangeButtonPosition, 300);
     }
 }
 

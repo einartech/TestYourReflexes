@@ -79,7 +79,7 @@ function StartGame() {
     // Button deleted and "Get Ready" message added and shown
     var startButtonElement = document.getElementById("start-game-button");
     startButtonElement.remove();
-    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='get-ready-message'><h2>Get Ready...</h2></div>");
+    document.getElementById("containerLeft").insertAdjacentHTML("afterbegin","<div id='get-ready-message'><h2>Get Ready to kill the UFO...</h2></div>");
 
     // Container Left background is changed
     document.getElementById("containerLeft").style.backgroundImage = "url(Assets/fondo-game.gif)";
